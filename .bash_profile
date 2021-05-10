@@ -86,5 +86,6 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
-
-
+# BASHMARKS
+# install by cloning https://github.com/huyng/bashmarks
+source ~/.local/bin/bashmarks.sh
