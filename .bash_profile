@@ -86,6 +86,17 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
+# GIT
+alias git_log_pretty='git log --graph --decorate --pretty=oneline --abbrev-commit'
+
+# CSV view snippet
+csv_view() {
+	column -s, -t < $1 | less -#2 -N -S
+}
+
+# PROCESS FINISH NOTIFIER
+alias ntf='spd-say "Task finished master."'
+
 # BASHMARKS
 # install by cloning https://github.com/huyng/bashmarks
 source ~/.local/bin/bashmarks.sh
