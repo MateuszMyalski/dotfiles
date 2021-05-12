@@ -20,7 +20,7 @@ alias diff='diff --color'
 alias diffy='diff --color -y'
 
 # FC
-alias fc='diff -e ~/micro'
+alias fc='fc -e ~/micro'
 
 # MICRO EDITOR
 alias micro='~/micro'
@@ -28,9 +28,11 @@ alias micro='~/micro'
 # PS
 color_prompt=yes
 if [ "$color_prompt" = yes ]; then
-    PS1='\033[01;33m┏\033[00m\033[01;32m\[[\H:\u]\[-\w:\033[00m\n\033[01;33m┗━━━\033[00m \[$(tput sgr0)\]'
+    PS1='\033[01;33m~\u\033[00m\033[01;31m@\W\033[33m λ:\033[00m '
+	PS2='\033[01;33m~\033[00m '
 else
-    PS1='┏\[[\H:\u]\[-\w:\n┗━━━ \[$(tput sgr0)\]'
+    PS1='~\u@\W λ: '
+    PS2='~ '
 fi
 unset color_prompt
 
