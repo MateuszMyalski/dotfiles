@@ -20,10 +20,7 @@ alias diff='diff --color'
 alias diffy='diff --color -y'
 
 # FC
-alias fc='fc -e ~/micro'
-
-# MICRO EDITOR
-alias micro='~/micro'
+alias fc='fc -e nano'
 
 # PS
 color_prompt=yes
