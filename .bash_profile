@@ -1,7 +1,6 @@
 # LS
-alias ll='ls -l'
+alias ll='ls -lh'
 alias la='ls -A'
-alias l='ls -CF'
 
 # CONFIRM BEFORE OVERWRITING SOMETHING
 alias cp='cp -i'
@@ -9,18 +8,32 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # CD
-alias ..='cd ..'
-alias ...='cd ../../'
-alias .3='cd ../../../'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../../'
+alias cdl='cd_and_print() { cd $1; ls -CF; }; cd_and_print'
+alias ..='cdl ..'
+alias ...='cdl ../../'
+alias .3='cdl ../../../'
+alias .4='cdl ../../../../'
+alias .5='cdl ../../../../../'
 
 # DIFF
 alias diff='diff --color'
 alias diffy='diff --color -y'
 
-# FC
-alias fc='fc -e nano'
+# GIT
+alias gs='git status'
+alias gc='git commit'
+alias gc-a='git commit --amend'
+alias gc-an='git commit --amend --no-edit'
+alias gl-p='git log --graph --decorate --pretty=oneline --abbrev-commit'
+alias gl='git log --oneline | head -n 5'
+
+# REPO
+alias rs='repo status'
+alias ru='repo upload'
+
+# FZF
+export FZF_DEFAULT_OPTS="--preview 'batcat {}'"
+alias fzf-c='fzf --bind "enter:become(code {})"'
 
 # PS
 color_prompt=yes
@@ -85,17 +98,19 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
-# GIT
-alias git_log_pretty='git log --graph --decorate --pretty=oneline --abbrev-commit'
-
 # CSV view snippet
 csv_view() {
 	column -s, -t < $1 | less -#2 -N -S
 }
 
 # PROCESS FINISH NOTIFIER
-alias ntf='spd-say "Task finished master."'
+alias ntf='spd-say "Task finished."'
 
 # BASHMARKS
 # install by cloning https://github.com/huyng/bashmarks
 source ~/.local/bin/bashmarks.sh
+
+# C REPL
+alias crepl='code main.c && watch "gcc main.c -o main && ./main"'
+
+source ~/.workrc
