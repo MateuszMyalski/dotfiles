@@ -3,3 +3,4 @@
 - (https://github.com/junegunn/fzf)[fzf]
 - bat
 - ripgrep
+- minicom
