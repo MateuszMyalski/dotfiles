@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+git_branch() {
+  local branch
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  if [ -n "$branch" ]; then
+    echo "⸙[$branch]"
+  fi
+}
+
+color_prompt=yes
+if [ "$color_prompt" = "yes" ]; then
+    # Define color variables
+    YELLOW='\[\033[01;33m\]'
+    RED='\[\033[01;31m\]'
+    RESET='\[\033[00m\]'
+    PROMPT_CHAR='\[\033[33m\] λ'
+
+    # Set PS1 and PS2 with color variables
+    PS1="${YELLOW}~\u${RESET}${RED}@[\\W]\$(git_branch)${YELLOW}${PROMPT_CHAR}:${RESET} "
+    PS2="${YELLOW}~${RESET} "
+
+else
+    PS1='~\u@\W λ: '
+    PS2='~ '
+fi
+unset color_prompt

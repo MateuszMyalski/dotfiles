@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+# Ignore upper and lowercase when tab completion
+bind "set completion-ignore-case on"
+
+# Change to named directory
+shopt -s autocd
+# Autocorrects cd misspellings
+shopt -s cdspell
+# Save multi-line commands in history as single line
+shopt -s cmdhist
+# Include '.' filenames that begins with . in results of filename expansion
+shopt -s dotglob
+# Do not overwrite history
+shopt -s histappend
+# Expand aliases
+shopt -s expand_aliases
+# Checks term size when bash regains control
+shopt -s checkwinsize
