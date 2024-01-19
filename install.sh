@@ -99,3 +99,5 @@ install_bashmarks() {
 
     make -C "$download_dir"/install.sh install
 }
+
+install_bashmarks
