@@ -1,0 +1,68 @@
+#!/bin/bash
+
+calculate_mod_time_delta() {
+    local file="$1"
+
+    current_time=$(date +%s)
+    mod_time=$(stat -c %Y "$file")
+    time_diff=$((current_time - mod_time))
+
+    return $time_diff
+}
+
+dot_self_update() {
+    local download_dir=""
+    download_dir=$(mktemp -d)
+
+    echo "Temprorary storage $download_dir"
+    git clone "https://github.com/MateuszMyalski/dotfiles.git" "$download_dir"
+
+    chmod +x "$download_dir/install.sh"
+    . "$download_dir/install.sh"
+
+    read -rp "Remove created temprorary storage $download_dir? (yes/no)? " answer
+
+    if [ "$answer" == "yes" ]; then
+        rm -rf -- "$download_dir"
+        echo "Removed!"
+    fi
+
+    echo "Updated completed!"
+}
+
+REMOTE_VERSION_FILE_URL="https://raw.githubusercontent.com/MateuszMyalski/dotfiles/master/.dot/.version"
+VERSION_FILE="$HOME/.dot/.version"
+CHECK_UPDATE_AFTER_SECONDS=$((60 * 60 * 8))
+
+# Step 1: Check if flag file exist
+if [ ! -e "$VERSION_FILE" ]; then
+    # The update checks has been disabled
+    return 0
+fi
+
+# Step 2: Check the file modification delta
+calculate_mod_time_delta "$VERSION_FILE"
+
+# Step 3: curl the version from git
+if [ "$?" -gt "$CHECK_UPDATE_AFTER_SECONDS" ]; then
+    REMOTE_VERSION=$(curl -s "$REMOTE_VERSION_FILE_URL")
+    LOCAL_VERSION=$(cat "$VERSION_FILE")
+else
+    # Do not check too frequenly
+    return 0
+fi
+
+# Step 4: Notify about update
+if [ "$LOCAL_VERSION" -lt "$REMOTE_VERSION" ]; then
+    echo "Dot files ready to be updated!"
+    echo "Remote version: $REMOTE_VERSION"
+    echo "Local version: $LOCAL_VERSION"
+    echo "To update execute: dot_self_update"
+    echo "To stop this message remove file: $VERSION_FILE"
+fi
+
+
+touch "$VERSION_FILE"
+
+
+

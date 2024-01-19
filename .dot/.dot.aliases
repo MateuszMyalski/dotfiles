@@ -11,7 +11,7 @@ alias rm='rm -i'
 alias rmd='rm -rI'
 
 cd_and_list_files() {
-    cd "$1" || exit
+    cd "$1" || return 1
     ll
 }
 
