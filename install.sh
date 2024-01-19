@@ -4,7 +4,7 @@ read -rp "This script will install dotfiles. Do you want to proceed? (yes/no): "
 
 if [ "$answer" != "yes" ]; then
     echo "Installation aborted."
-    return 1
+    exit 1
 fi
 
 DOT_DIR="$HOME/.dot"
