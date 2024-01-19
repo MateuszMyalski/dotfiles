@@ -49,13 +49,13 @@ dot_check_update() {
         echo "To stop this message remove file: $VERSION_FILE"
 
         return 0
-    fi
-
-    if [ "$1" != "-s" ] ; then
+    elif [ "$1" != "-s" ]; then
+        echo "Remote version: $REMOTE_VERSION"
+        echo "Local version: $LOCAL_VERSION"
         echo "Version up to date!"
-    fi
 
-    return 1
+        return 1
+    fi
 }
 
 # Cgit reheck if flag file exist
