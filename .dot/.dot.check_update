@@ -18,7 +18,9 @@ dot_self_update() {
     git clone "https://github.com/MateuszMyalski/dotfiles.git" "$download_dir"
 
     chmod +x "$download_dir/install.sh"
-    . "$download_dir/install.sh"
+    pushd "$download_dir" || return 1
+    . "install.sh"
+    popd || return 1
 
     read -rp "Remove created temprorary storage $download_dir? (yes/no)? " answer
 
