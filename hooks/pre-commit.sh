@@ -1,9 +1,9 @@
 #!/bin/bash
 
-VERSION_FILE="./dot/.version"
+VERSION_FILE=".dot/.version"
 
 # Check if the version file exists
-if [ -e "$VERSION_FILE" ]; then
+if [ -e "$(pwd)/$VERSION_FILE" ]; then
     # Increment version number
     current_version=$(cat "$VERSION_FILE")
     new_version=$((current_version + 1))
@@ -14,7 +14,7 @@ if [ -e "$VERSION_FILE" ]; then
 
     echo "Version incremented to $new_version"
 else
-    echo "Error: $VERSION_FILE not found"
+    echo "Error: $(pwd)/$VERSION_FILE not found"
     exit 1
 fi
 

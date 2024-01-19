@@ -71,7 +71,7 @@ install_apt_programs() {
 
     local programs_to_install=("fzf" "bat" "minicom" "ranger" "urxvt-unicode")
     
-    for program in "${programs[@]}"; do
+    for program in "${programs_to_install[@]}"; do
         read -rp "Do you want to install $program? (yes/no): " answer
         if [ "$answer" = "yes" ]; then
             sudo apt install -y "$program"
