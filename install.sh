@@ -48,8 +48,8 @@ if [ -d "$DOT_DIR" ]; then
     rm -rf "$DOT_DIR"
 fi
 
-echo "Copying $(dirname \$0)/.dot to $DOT_DIR"
-cp -r "$(dirname \$0)"/.dot "$DOT_DIR"
+echo "Copying $(pwd)/.dot to $DOT_DIR"
+cp -r "$(pwd)"/.dot "$DOT_DIR"
 
 echo "Installation of dotfiles finished successfully."
 
@@ -57,7 +57,8 @@ echo "Installation of dotfiles finished successfully."
 backup_existing "$XRESOURCES_FILE" "$XRESOURCES_BACKUP_FILE"
 
 # Step 7: Copy .Xresources file to ~/.Xresources
-cp ".Xresources" "$XRESOURCES_FILE"
+echo "Copying $(pwd)/.Xresources to $XRESOURCES_FILE"
+cp "$(pwd)"/".Xresources" "$XRESOURCES_FILE"
 
 
 # Step 8: Install utility programs via apt-get
