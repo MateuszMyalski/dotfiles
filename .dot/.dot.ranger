@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Prohibit nested ranger instances
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger "$@"
+    else
+        echo "Nested ranger instances!"
+        exit 1
+    fi
+}
