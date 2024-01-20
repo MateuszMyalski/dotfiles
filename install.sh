@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Display help
+if [ -n "$1" ]; then
+    if [ "$1" = "-h" ] || [  "$1" = "--help" ]; then
+        echo "$0.sh [-h|--help] [-d|--dots-only]"
+        echo "Help:"
+        echo "  -h, --help          Display this help message."
+        echo "  -d, --dots-only     Install only the dotfiles without asking for applications."
+
+        exit 0
+    fi
+fi
+
 read -rp "This script will install dotfiles. Do you want to proceed? (yes/no): " answer
 
 if [ "$answer" != "yes" ]; then
@@ -51,7 +63,6 @@ fi
 echo "Copying $(pwd)/.dot to $DOT_DIR"
 cp -r "$(pwd)"/.dot "$DOT_DIR"
 
-echo "Installation of dotfiles finished successfully."
 
 # Step 6: Backup existing ~/.Xresources and remove old one
 backup_existing "$XRESOURCES_FILE" "$XRESOURCES_BACKUP_FILE"
@@ -59,6 +70,15 @@ backup_existing "$XRESOURCES_FILE" "$XRESOURCES_BACKUP_FILE"
 # Step 7: Copy .Xresources file to ~/.Xresources
 echo "Copying $(pwd)/.Xresources to $XRESOURCES_FILE"
 cp "$(pwd)"/".Xresources" "$XRESOURCES_FILE"
+
+echo "Installation of dotfiles finished successfully."
+
+# In case provided option -d/--dots-only skip asking for aplications
+if [ -n "$1" ]; then
+    if [ "$1" = "-d" ] || [  "$1" = "--dots-only" ]; then
+        exit 0
+    fi
+fi
 
 
 # Step 8: Install utility programs via apt-get

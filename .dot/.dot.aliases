@@ -10,6 +10,11 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 rm_dir_recursivley() {
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: <dir1> <dir2> <dir3> ..."
+        return 1
+    fi
+
     for path in "$@"; do
         if [ "$path" = "." ]; then
             echo "This looks sketchy..."
