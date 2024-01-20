@@ -10,46 +10,46 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 rm_dir_recursivley() {
-    local path=$1
+    for path in "$@"; do
+        if [ "$path" = "." ]; then
+            echo "This looks sketchy..."
+            return 1
+        fi
 
-    if [ "$path" = "." ]; then
-        echo "This looks sketchy..."
-        return 1
-    fi
+        # Check if the provided path exists
+        if [ ! -e "$path" ]; then
+            echo "The provided path does not exist."
+            return 1
+        fi
 
-    # Check if the provided path exists
-    if [ ! -e "$path" ]; then
-        echo "The provided path does not exist."
-        return 1
-    fi
+        # Check if it is a directory
+        if [ ! -d "$path" ]; then
+            echo "The provided path is not a directory."
+            return 1
+        fi
 
-    # Check if it is a directory
-    if [ ! -d "$path" ]; then
-        echo "The provided path is not a directory."
-        return 1
-    fi
+        # Check if the directory is empty
+        local item_count=""
+        item_count=$(find "$path" -mindepth 1 | wc -l)
+        if [ "$item_count" -eq 0 ]; then
+            echo "The folder is empty."
+        fi
 
-    # Check if the directory is empty
-    local item_count=""
-    item_count=$(find "$path" -mindepth 1 | wc -l)
-    if [ "$item_count" -eq 0 ]; then
-        echo "The folder is empty."
-    fi
+        # Display the number of items
+        echo "The folder '$path' contains $item_count item(s)."
 
-    # Display the number of items
-    echo "The folder '$path' contains $item_count item(s)."
+        # Ask the user if they want to delete items
+        read -rp "Do you want to delete items in '$path'? (y/n): " response
 
-    # Ask the user if they want to delete items
-    read -rp "Do you want to delete items in '$path'? (y/n): " response
-
-    if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
-        # Delete items in the folder
-        rm -rf "$path"
-        echo "Items deleted successfully."
-    else
-        echo "Operation aborted."
-        return 1
-    fi
+        if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+            # Delete items in the folder
+            rm -rf "$path"
+            echo "Items deleted successfully."
+        else
+            echo "Operation aborted."
+            return 1
+        fi
+    done
 
     return 0
 }
