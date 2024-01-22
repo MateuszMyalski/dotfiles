@@ -69,10 +69,10 @@ fi
 delta_time=$(calculate_mod_time_delta "$VERSION_FILE")
 
 # Step 2: curl the version from git
-if [ "$delta_time -gt "$CHECK_UPDATE_AFTER_SECONDS" ]; then
+if [ "$delta_time" -gt "$CHECK_UPDATE_AFTER_SECONDS" ]; then
     dot_check_update "-s"
 else
-    # Do not check too frequenly
+    # Do not check too frequently
     return 0
 fi
 
