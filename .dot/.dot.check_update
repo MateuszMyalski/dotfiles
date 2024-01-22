@@ -7,7 +7,7 @@ calculate_mod_time_delta() {
     mod_time=$(stat -c %Y "$file")
     time_diff=$((current_time - mod_time))
 
-    return $time_diff
+    echo $time_diff
 }
 
 dot_self_update() {
@@ -65,10 +65,11 @@ if [ ! -e "$VERSION_FILE" ]; then
 fi
 
 # Step 1: Check the file modification delta
-calculate_mod_time_delta "$VERSION_FILE"
+
+delta_time=$(calculate_mod_time_delta "$VERSION_FILE")
 
 # Step 2: curl the version from git
-if [ "$?" -gt "$CHECK_UPDATE_AFTER_SECONDS" ]; then
+if [ "$delta_time -gt "$CHECK_UPDATE_AFTER_SECONDS" ]; then
     dot_check_update "-s"
 else
     # Do not check too frequenly
