@@ -102,6 +102,8 @@ create_uart_alias() {
     alias "uart_${speed}_USB${port}"="${serial_tool} -b ${speed} -D /dev/ttyUSB${port}"
 }
 
+create_uart_alias "57600" "0"
+create_uart_alias "57600" "1"
 create_uart_alias "230400" "0"
 create_uart_alias "115200" "0"
 create_uart_alias "230400" "1"
