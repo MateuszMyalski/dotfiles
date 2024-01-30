@@ -90,7 +90,7 @@ install_apt_programs() {
         return 1
     fi
 
-    local programs_to_install=("fzf" "bat" "minicom" "ranger" "urxvt-unicode")
+    local programs_to_install=("curl", "fzf" "bat" "minicom" "ranger" "urxvt-unicode")
     
     for program in "${programs_to_install[@]}"; do
         read -rp "Do you want to install $program? (yes/no): " answer
