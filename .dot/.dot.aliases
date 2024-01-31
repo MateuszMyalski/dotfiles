@@ -93,6 +93,11 @@ alias rr='ranger'
 alias df='df -h'
 alias free='free -m'
 
+# Python
+alias py-venv-c='python -m venv .venv'
+alias py-venv-a='source .venv/bin/activate'
+alias py-venv-d='deactivate'
+
 # Minicom =====================================================
 # Function to create UART aliases
 create_uart_alias() {
