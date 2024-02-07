@@ -120,3 +120,4 @@ create_uart_alias "3000000" "0"
 alias ntf='spd-say "Task finished!"'
 alias crepl='code main.c && watch "gcc main.c -o main && ./main"'
 alias grep='grep --color=auto'
+alias clr="clear"
