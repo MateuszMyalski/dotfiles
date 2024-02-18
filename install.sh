@@ -90,7 +90,7 @@ install_apt_programs() {
         return 1
     fi
 
-    local programs_to_install=("curl", "fzf" "bat" "minicom" "ranger" "urxvt-unicode")
+    local programs_to_install=("curl" "fzf" "bat" "minicom" "ranger" "rxvt-unicode")
     
     for program in "${programs_to_install[@]}"; do
         read -rp "Do you want to install $program? (yes/no): " answer
@@ -118,7 +118,7 @@ install_bashmarks() {
 
     git clone https://github.com/huyng/bashmarks.git "$download_dir"
 
-    make -C "$download_dir"/install.sh install
+    make -C "$download_dir" install
 }
 
 install_bashmarks
