@@ -4,76 +4,57 @@
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
     <value type="int" value="1"/>
-    <property name="dark-mode" type="bool" value="true"/>
+    <property name="dark-mode" type="bool" value="false"/>
     <property name="panel-1" type="empty">
-      <property name="position" type="string" value="p=6;x=0;y=0"/>
-      <property name="length" type="double" value="100"/>
+      <property name="position" type="string" value="p=11;x=1017;y=14"/>
+      <property name="length" type="double" value="1"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="0"/>
-      <property name="size" type="uint" value="28"/>
+      <property name="size" type="uint" value="22"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="5"/>
-        <value type="int" value="1"/>
-        <value type="int" value="6"/>
-        <value type="int" value="2"/>
-        <value type="int" value="11"/>
-        <value type="int" value="15"/>
-        <value type="int" value="10"/>
-        <value type="int" value="12"/>
-        <value type="int" value="8"/>
         <value type="int" value="4"/>
-        <value type="int" value="9"/>
-        <value type="int" value="17"/>
         <value type="int" value="7"/>
-        <value type="int" value="13"/>
+        <value type="int" value="12"/>
         <value type="int" value="14"/>
-        <value type="int" value="16"/>
+        <value type="int" value="6"/>
+        <value type="int" value="17"/>
       </property>
-      <property name="leave-opacity" type="uint" value="50"/>
+      <property name="leave-opacity" type="uint" value="100"/>
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="mode" type="uint" value="0"/>
       <property name="disable-struts" type="bool" value="false"/>
       <property name="nrows" type="uint" value="1"/>
       <property name="length-adjust" type="bool" value="true"/>
       <property name="autohide-behavior" type="uint" value="0"/>
-      <property name="background-style" type="uint" value="0"/>
+      <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
-        <value type="double" value="0"/>
-        <value type="double" value="0"/>
-        <value type="double" value="0"/>
+        <value type="double" value="0.14901960784313725"/>
+        <value type="double" value="0.63529411764705879"/>
+        <value type="double" value="0.41176470588235292"/>
         <value type="double" value="1"/>
       </property>
     </property>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-1" type="string" value="applicationsmenu">
-      <property name="show-button-title" type="bool" value="true"/>
-      <property name="show-menu-icons" type="bool" value="true"/>
-      <property name="show-generic-names" type="bool" value="true"/>
-      <property name="show-tooltips" type="bool" value="false"/>
-      <property name="custom-menu" type="bool" value="false"/>
-      <property name="button-title" type="string" value=""/>
-    </property>
-    <property name="plugin-2" type="string" value="tasklist">
-      <property name="grouping" type="uint" value="1"/>
-      <property name="flat-buttons" type="bool" value="true"/>
-      <property name="show-labels" type="bool" value="false"/>
-      <property name="sort-order" type="uint" value="2"/>
-      <property name="show-wireframes" type="bool" value="true"/>
-    </property>
     <property name="plugin-4" type="string" value="pager">
-      <property name="rows" type="uint" value="2"/>
+      <property name="rows" type="uint" value="1"/>
       <property name="miniature-view" type="bool" value="false"/>
-      <property name="numbering" type="bool" value="true"/>
+      <property name="numbering" type="bool" value="false"/>
       <property name="wrap-workspaces" type="bool" value="false"/>
-    </property>
-    <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="2"/>
-      <property name="expand" type="bool" value="false"/>
+      <property name="workspace-scrolling" type="bool" value="false"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (67%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (76%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (71%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (74%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (75%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (73%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (70%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (68%)"/>
+        <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (69%)"/>
         <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (62%)"/>
         <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (60%)"/>
         <value type="string" value="wi-fi network connection “trinityproject” active: trinityproject (63%)"/>
@@ -89,26 +70,27 @@
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="flameshot"/>
       </property>
-    </property>
-    <property name="plugin-11" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="true"/>
+      <property name="icon-size" type="int" value="0"/>
+      <property name="symbolic-icons" type="bool" value="false"/>
+      <property name="menu-is-primary" type="bool" value="false"/>
+      <property name="hidden-legacy-items" type="array">
+      </property>
+      <property name="single-row" type="bool" value="false"/>
+      <property name="hide-new-items" type="bool" value="false"/>
     </property>
     <property name="plugin-12" type="string" value="clock">
-      <property name="mode" type="uint" value="4"/>
+      <property name="mode" type="uint" value="2"/>
       <property name="tooltip-format" type="string" value="%A %d %B %Y"/>
       <property name="show-military" type="bool" value="true"/>
       <property name="show-seconds" type="bool" value="true"/>
       <property name="flash-separators" type="bool" value="true"/>
       <property name="show-meridiem" type="bool" value="false"/>
-    </property>
-    <property name="plugin-13" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="false"/>
+      <property name="digital-layout" type="uint" value="0"/>
+      <property name="digital-date-font" type="string" value="Sans 8"/>
     </property>
     <property name="plugin-14" type="string" value="actions">
       <property name="items" type="array">
-        <value type="string" value="+lock-screen"/>
+        <value type="string" value="-lock-screen"/>
         <value type="string" value="-switch-user"/>
         <value type="string" value="-separator"/>
         <value type="string" value="-suspend"/>
@@ -116,37 +98,25 @@
         <value type="string" value="-hybrid-sleep"/>
         <value type="string" value="-separator"/>
         <value type="string" value="+shutdown"/>
-        <value type="string" value="+restart"/>
+        <value type="string" value="-restart"/>
         <value type="string" value="-separator"/>
         <value type="string" value="-logout"/>
-        <value type="string" value="+logout-dialog"/>
+        <value type="string" value="-logout-dialog"/>
       </property>
-      <property name="appearance" type="uint" value="1"/>
+      <property name="appearance" type="uint" value="0"/>
     </property>
-    <property name="plugin-7" type="string" value="power-manager-plugin"/>
-    <property name="plugin-8" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-9" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="false"/>
-    </property>
-    <property name="plugin-10" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-15" type="string" value="clock">
-      <property name="tooltip-format" type="string" value="%x"/>
-      <property name="digital-layout" type="uint" value="2"/>
-      <property name="mode" type="uint" value="2"/>
-      <property name="digital-date-font" type="string" value="Sans 12"/>
+    <property name="plugin-7" type="string" value="indicator">
+      <property name="known-indicators" type="array">
+        <value type="string" value="libayatana-application.so"/>
+      </property>
+      <property name="blacklist" type="array">
+        <value type="string" value="libayatana-application.so"/>
+      </property>
+      <property name="square-icons" type="bool" value="false"/>
     </property>
     <property name="plugin-17" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance1338;chromium.instance1651;chromium.instance1867;chromium.instance7134;spotify"/>
-    </property>
-    <property name="plugin-16" type="string" value="separator">
-      <property name="expand" type="bool" value="false"/>
-      <property name="style" type="uint" value="2"/>
+      <property name="mpris-players" type="string" value="chromium.instance1599;chromium.instance1605;chromium.instance1708;chromium.instance2"/>
     </property>
   </property>
 </channel>

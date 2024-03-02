@@ -7,3 +7,7 @@ The auto-update feature of the dotfiles relies on number stored in `.version` fi
 To configure:
 1. `cp hooks/pre-commit.sh .git/hooks/pre-commit`
 2. `chmod +x .git/hooks/pre-commit`
+
+# Themes
+1. Main theme [Andromeda](https://www.xfce-look.org/p/2039961)
+2. Icons [Argon](https://www.xfce-look.org/p/1490645)

@@ -102,7 +102,7 @@ install_apt_programs() {
     done
 }
 
-install_apt_programs
+# install_apt_programs
 
 # Step 9: Install third-party tools
 install_bashmarks() {
@@ -121,4 +121,4 @@ install_bashmarks() {
     make -C "$download_dir" install
 }
 
-install_bashmarks
+# install_bashmarks
