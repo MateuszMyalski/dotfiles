@@ -1,0 +1,32 @@
+conky.config = {
+    background = true,
+    double_buffer = true,
+    alignment = 'bottom_right',
+    draw_shades = false,
+    use_xft = true,
+    font = 'Noto Mono:size=9',
+    minimum_width = 150,
+    maximum_width = 150,
+    gap_x = 50,
+    own_window = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_argb_visual = true,
+    own_window_argb_value = 127,
+    update_interval = 1,
+    update_interval_on_battery = 2.0,
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+    top_name_width = 9
+}
+
+conky.text = [[
+CPU $alignr $cpu%
+$cpubar
+RAM $alignr $memperc%
+$membar
+SSD $alignr $fs_used/$fs_size
+${fs_bar /}
+IP $alignr ${addr wlp0s20f3}
+Stamina $alignr $battery_percent%
+$battery_bar
+]]
