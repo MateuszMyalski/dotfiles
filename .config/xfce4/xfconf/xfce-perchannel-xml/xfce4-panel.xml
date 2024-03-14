@@ -117,7 +117,7 @@
     </property>
     <property name="plugin-17" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance15007;chromium.instance1599;chromium.instance1605;chromium.instance1628;chromium.instance1629;chromium.instance1708;chromium.instance2;chromium.instance2066"/>
+      <property name="mpris-players" type="string" value="chromium.instance15007;chromium.instance1599;chromium.instance1605;chromium.instance1618;chromium.instance1628;chromium.instance1629;chromium.instance1636;chromium.instance1644;chromium.instance1646;chromium.instance1647;chromium.instance1651;chromium.instance1654;chromium.instance1667;chromium.instance1685;chromium.instance1708;chromium.instance2;chromium.instance2066;chromium.instance23923;spotify"/>
     </property>
   </property>
 </channel>
