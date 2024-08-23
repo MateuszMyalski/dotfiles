@@ -85,7 +85,7 @@ alias ru='repo upload'
 
 # fzf =========================================================
 alias fzf-c='fzf --bind "enter:become(code {})"'
-alias hh='cat ~/.bash_history | fzf | sh'
+alias hh='tac ~/.bash_history | fzf | sh'
 
 # ranger ======================================================
 alias rr='ranger'
