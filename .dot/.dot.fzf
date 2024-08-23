@@ -1,3 +1,4 @@
 #!/bin/bash
 
-export FZF_DEFAULT_OPTS="--preview 'batcat {}'"
+# export FZF_DEFAULT_OPTS="--preview 'batcat {}'"
+export FZF_DEFAULT_OPTS=""

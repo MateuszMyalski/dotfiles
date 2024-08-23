@@ -85,6 +85,7 @@ alias ru='repo upload'
 
 # fzf =========================================================
 alias fzf-c='fzf --bind "enter:become(code {})"'
+alias hh='cat ~/.bash_history | fzf | sh'
 
 # ranger ======================================================
 alias rr='ranger'
@@ -107,14 +108,16 @@ create_uart_alias() {
     alias "uart_${speed}_USB${port}"="${serial_tool} -b ${speed} -D /dev/ttyUSB${port}"
 }
 
-create_uart_alias "57600" "0"
-create_uart_alias "57600" "1"
-create_uart_alias "230400" "0"
-create_uart_alias "115200" "0"
-create_uart_alias "230400" "1"
-create_uart_alias "115200" "1"
-create_uart_alias "3000000" "1"
-create_uart_alias "3000000" "0"
+for file in /dev/ttyUSB*; do
+    portUSB=$(echo "$file" | grep -o '[0-9]\+')
+
+    if [[ -n "$portUSB" ]]; then
+        create_uart_alias "57600" "$portUSB"
+        create_uart_alias "115200" "$portUSB"
+        create_uart_alias "230400" "$portUSB"
+        create_uart_alias "3000000" "$portUSB"
+    fi
+done
 
 # Misc ========================================================
 alias ntf='spd-say "Task finished!"'
