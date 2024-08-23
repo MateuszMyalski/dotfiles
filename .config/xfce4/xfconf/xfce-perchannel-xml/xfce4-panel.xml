@@ -66,6 +66,7 @@
         <value type="string" value="xfce4-power-manager"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="vlc"/>
         <value type="string" value="blueman"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="flameshot"/>
@@ -117,7 +118,7 @@
     </property>
     <property name="plugin-17" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance15007;chromium.instance1599;chromium.instance1605;chromium.instance1618;chromium.instance1628;chromium.instance1629;chromium.instance1636;chromium.instance1644;chromium.instance1646;chromium.instance1647;chromium.instance1651;chromium.instance1654;chromium.instance1667;chromium.instance1685;chromium.instance1708;chromium.instance2;chromium.instance2066;chromium.instance23923;spotify"/>
+      <property name="mpris-players" type="string" value="chromium.instance14839;chromium.instance15007;chromium.instance1599;chromium.instance1605;chromium.instance1618;chromium.instance1626;chromium.instance1628;chromium.instance1629;chromium.instance1633;chromium.instance1634;chromium.instance1635;chromium.instance1636;chromium.instance1637;chromium.instance1643;chromium.instance1644;chromium.instance1646;chromium.instance1647;chromium.instance1648;chromium.instance1650;chromium.instance1651;chromium.instance1652;chromium.instance1654;chromium.instance1655;chromium.instance1657;chromium.instance1665;chromium.instance1667;chromium.instance1668;chromium.instance1669;chromium.instance1674;chromium.instance1680;chromium.instance1684;chromium.instance1685;chromium.instance1688;chromium.instance1689;chromium.instance1691;chromium.instance1692;chromium.instance1693;chromium.instance1695;chromium.instance1702;chromium.instance1704;chromium.instance1708;chromium.instance1710;chromium.instance1715;chromium.instance1718;chromium.instance1728;chromium.instance1732;chromium.instance1735;chromium.instance1761;chromium.instance1773;chromium.instance2;chromium.instance2066;chromium.instance21147;chromium.instance2153;chromium.instance2229;chromium.instance23923;spotify;vlc"/>
     </property>
   </property>
 </channel>
