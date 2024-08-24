@@ -3,9 +3,17 @@
 
 git_branch() {
   local branch
+  local status
   branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+
   if [ -n "$branch" ]; then
-    echo ".[$branch]"
+    # Check if there are unpushed changes
+    if ! git diff --quiet 2>/dev/null || ! git diff --staged --quiet 2>/dev/null; then
+      status="*"
+    else
+      status=""
+    fi
+    echo ".[$branch$status]"
   fi
 }
 
@@ -15,10 +23,11 @@ if [ "$color_prompt" = "yes" ]; then
     YELLOW='\[\033[01;33m\]'
     RED='\[\033[01;31m\]'
     RESET='\[\033[00m\]'
-    PROMPT_CHAR='\[\033[33m\] λ'
+
+    PROMPT_CHAR="${YELLOW} λ"
 
     # Set PS1 and PS2 with color variables
-    PS1="${YELLOW}~\u${RESET}${RED}@[\\W]\$(git_branch)${YELLOW}${PROMPT_CHAR}:${RESET} "
+    PS1="${YELLOW}~\u${RESET}${RED}@[\\W]\$(git_branch)${PROMPT_CHAR}:${RESET} "
     PS2="${YELLOW}~${RESET} "
 
 else
@@ -26,3 +35,7 @@ else
     PS2='~ '
 fi
 unset color_prompt
+
+
+# After each command, append to the history file and reread it
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
