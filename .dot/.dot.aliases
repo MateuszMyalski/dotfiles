@@ -133,5 +133,5 @@ alias clr="clear"
 
 # XFce ========================================================
 if command -v startxfce4 >/dev/null 2>&1; then
-    alias xfce4start='startxfce4'
+    alias xfce4start='sxf4'
 fi
