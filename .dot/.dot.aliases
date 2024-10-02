@@ -96,9 +96,6 @@ bash_history_fzf() {
 alias fzf-bh='bash_history_fzf'
 bind -x '"\b":bash_history_fzf'
 
-# ranger ======================================================
-alias rr='ranger'
-
 # Memory ======================================================
 alias df='df -h'
 alias free='free -m'
