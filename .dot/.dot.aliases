@@ -130,8 +130,3 @@ alias ntf='spd-say "Task finished!"'
 alias crepl='code main.c && watch "gcc main.c -o main && ./main"'
 alias grep='grep --color=auto'
 alias clr="clear"
-
-# XFce ========================================================
-if command -v startxfce4 >/dev/null 2>&1; then
-    alias sxf4='startxfce4 && xfdesktop &'
-fi
