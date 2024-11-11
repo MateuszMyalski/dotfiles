@@ -96,6 +96,25 @@ bash_history_fzf() {
 alias fzf-bh='bash_history_fzf'
 bind -x '"\b":bash_history_fzf'
 
+bettercd() {
+    cd $1
+    if [ -z $1 ]
+    then
+        selection="$(ls -a | fzf --height 40% --reverse)"
+        if [[ -d "$selection" ]]
+        then
+            cd "$selection"
+        elif [[ -f "$selection" ]]
+        then
+            code "$selection"
+        fi
+    fi
+}
+
+# cd ==========================================================
+
+alias cd="bettercd"
+
 # Memory ======================================================
 alias df='df -h'
 alias free='free -m'
