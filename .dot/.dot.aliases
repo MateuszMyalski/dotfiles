@@ -5,6 +5,12 @@ alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -Alh'
 
+better_ls() {
+    ls -l | awk 'NR==1{printf "%-25s %-10s %-10s %-20s %-10s\n", "Name", "Size", "Date", "Time", "Permissions"} NR>1{printf "%-25s %-10s %-20s %-10s\n", $9, int($5/1024)"KB", $6"/"$7" "$8, $1}' | column -t
+}
+
+alias lss="better_ls"
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -63,7 +69,7 @@ alias rmd='rm_dir_recursivley'
 
 cd_and_list_files() {
     cd "$1" || return 1
-    ll
+    lss
 }
 
 alias cdl='cd_and_list_files'
@@ -100,7 +106,7 @@ bettercd() {
     cd $1
     if [ -z $1 ]
     then
-        selection="$(ls -a | fzf --height 40% --reverse)"
+        selection="$(lss | tail +2 | fzf --height 40% --reverse | awk '{printf $1}')"
         if [[ -d "$selection" ]]
         then
             cd "$selection"
