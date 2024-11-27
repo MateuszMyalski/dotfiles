@@ -2,14 +2,12 @@
 
 # Directory aliases ===========================================
 alias ls='ls --color=auto'
-#alias ll='ls -lh'
+alias ll='ls -lh'
 alias la='ls -Alh'
 
 better_ls() {
     ls -l "$@" | awk 'NR==1{printf "%-25s %-10s %-10s %-20s %-10s\n", "Name", "Size", "Date", "Time", "Permissions"} NR>1{printf "%-25s %-10s %-20s %-10s\n", $9, int($5/1024)"KB", $6"/"$7" "$8, $1}' | column -t
 }
-
-alias ll="better_ls"
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -106,7 +104,7 @@ bettercd() {
     cd $1
     if [ -z $1 ]
     then
-        selection="$(ll | tail +2 | fzf --height 40% --reverse | awk '{printf $1}')"
+        selection="$(better_ls | tail +2 | fzf --height 40% --reverse | awk '{printf $1}')"
         if [[ -d "$selection" ]]
         then
             cd "$selection"
