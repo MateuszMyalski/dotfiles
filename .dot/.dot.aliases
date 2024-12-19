@@ -117,12 +117,12 @@ bettercd() {
 
 # cd ==========================================================
 
-cd() {
-    [[ $# -eq 0 ]] && return
-    builtin cd "$@"
-}
+# cd() {
+#     [[ $# -eq 0 ]] && return
+#     builtin cd "$@"
+# }
 
-alias cd="bettercd"
+# alias cd="bettercd"
 
 # Memory ======================================================
 alias df='df -h'
