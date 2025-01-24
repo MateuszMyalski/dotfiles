@@ -37,7 +37,7 @@ VERSION_FILE="$HOME/.dot/.version"
 CHECK_UPDATE_AFTER_SECONDS=$((60 * 60 * 8))
 
 dot_check_update() {
-    REMOTE_VERSION=$(curl -s "$REMOTE_VERSION_FILE_URL")
+    REMOTE_VERSION=$(curl -m 10 -s "$REMOTE_VERSION_FILE_URL")
     LOCAL_VERSION=$(cat "$VERSION_FILE")
 
     # Step 3: Notify about update
