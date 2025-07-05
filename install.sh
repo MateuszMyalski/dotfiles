@@ -70,32 +70,11 @@ if [ -n "$1" ]; then
     fi
 fi
 
-
-# Step 8: Install utility programs via apt-get
-install_apt_programs() {
-    read -rp "Do you want to install related applications via apt? (yes/no): " answer
-
-    if [ "$answer" != "yes" ]; then
-        echo "Aborted."
-        return 1
-    fi
-
-    local programs_to_install=("curl" "fzf" "bat" "minicom" "ranger" "rxvt-unicode")
-    
-    for program in "${programs_to_install[@]}"; do
-        read -rp "Do you want to install $program? (yes/no): " answer
-        if [ "$answer" = "yes" ]; then
-            sudo apt install -y "$program"
-        else
-            echo "$program installation skipped."
-        fi
-    done
-}
-
-# install_apt_programs
-
 # Step 9: Install third-party tools
 install_bashmarks() {
+    if [ -f "$HOME/.local/bin/bashmarks.sh" ]; then
+        return 0
+    fi
     read -rp "Do you want to install bashmarks? (yes/no): " answer
 
     if [ "$answer" != "yes" ]; then
@@ -111,4 +90,4 @@ install_bashmarks() {
     make -C "$download_dir" install
 }
 
-# install_bashmarks
+install_bashmarks
