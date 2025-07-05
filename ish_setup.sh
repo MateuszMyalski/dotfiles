@@ -92,9 +92,14 @@ configure_git() {
 # Note: Currently using /bin/login to switch users does not work in iSH 
 # (https://github.com/ish-app/ish/issues/2509)
 add_change_user() {
-    echo "> Switching to user '$DEV_USER'."
+    echo "> Creating .profile to switch to user '$DEV_USER' on root login."
     echo "su - \"$DEV_USER\"" > /root/.profile
     chmod 600 /root/.profile
+}
+
+change_motd() {
+    echo "> Setting up MOTD."
+    echo "Welcome back!" > /etc/motd
 }
 
 # Main setup
@@ -104,6 +109,8 @@ main() {
 
     echo "> Updating package index."
     apk update
+
+    change_motd
 
     echo "> Installing packages."
     install_package bash
