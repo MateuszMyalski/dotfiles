@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 git_branch() {
   local branch

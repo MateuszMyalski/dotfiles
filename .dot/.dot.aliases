@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Directory aliases ===========================================
 alias ls='ls --color=auto'
@@ -85,16 +85,6 @@ alias ru='repo upload'
 
 # fzf =========================================================
 alias fzf-c='fzf --bind "enter:become(code {})"'
-
-# Bind Ctrl+H for bash history fuzzy-finder
-bash_history_fzf() {
-    local found_command
-    found_command=$(fzf --tac --no-sort --height=40% --border --info=hidden < "$HOME"/.bash_history)
-    history -s "${found_command}"
-    eval "$found_command"
-}
-alias fzf-bh='bash_history_fzf'
-bind -x '"\b":bash_history_fzf'
 
 # Memory ======================================================
 alias df='df -h'

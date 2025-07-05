@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 calculate_mod_time_delta() {
     local file="$1"
@@ -37,7 +37,7 @@ VERSION_FILE="$HOME/.dot/.version"
 CHECK_UPDATE_AFTER_SECONDS=$((60 * 60 * 8))
 
 dot_check_update() {
-    REMOTE_VERSION=$(curl -m 10 -s "$REMOTE_VERSION_FILE_URL")
+    REMOTE_VERSION=$(wget -qO- --timeout=3 "$REMOTE_VERSION_FILE_URL")
     LOCAL_VERSION=$(cat "$VERSION_FILE")
 
     # Step 3: Notify about update
@@ -68,7 +68,7 @@ fi
 
 delta_time=$(calculate_mod_time_delta "$VERSION_FILE")
 
-# Step 2: curl the version from git
+# Step 2: Download the version from git
 if [ "$delta_time" -gt "$CHECK_UPDATE_AFTER_SECONDS" ]; then
     dot_check_update "-s"
 else

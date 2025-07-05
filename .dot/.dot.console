@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 # Ignore upper and lowercase when tab completion

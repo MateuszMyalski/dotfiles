@@ -24,8 +24,6 @@ DOT_BACKUP_DIR="$HOME/.dot.bak"
 BASHRC_FILE="$HOME/.bashrc"
 BASHRC_BACKUP_FILE="$HOME/.bashrc.bak"
 SOURCE_ME_FILE="$DOT_DIR/.source_me"
-XRESOURCES_FILE="$HOME/.Xresources"
-XRESOURCES_BACKUP_FILE="$HOME/.Xresources.bak"
 
 backup_existing() {
     local source_path="$1"
@@ -62,14 +60,6 @@ fi
 
 echo "Copying $(pwd)/.dot to $DOT_DIR"
 cp -r "$(pwd)"/.dot "$DOT_DIR"
-
-
-# Step 6: Backup existing ~/.Xresources and remove old one
-backup_existing "$XRESOURCES_FILE" "$XRESOURCES_BACKUP_FILE"
-
-# Step 7: Copy .Xresources file to ~/.Xresources
-echo "Copying $(pwd)/.Xresources to $XRESOURCES_FILE"
-cp "$(pwd)"/".Xresources" "$XRESOURCES_FILE"
 
 echo "Installation of dotfiles finished successfully."
 
