@@ -27,5 +27,5 @@ include () {
     [[ -f "$1" ]] && source "$1"
 }
 
-include .bash_profile
-include .bash_alias
+include ~/.bash_profile
+include ~/.bash_alias
