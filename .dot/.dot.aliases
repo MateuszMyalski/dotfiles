@@ -78,7 +78,6 @@ alias gc-an='git commit --amend --no-edit'
 alias gl='git log'
 alias gc-b='git checkout -b'
 alias gu='git push'
-alias gg-key='ssh-keygen -t ed25519 -C '
 
 # repo tool aliases ===========================================
 alias rs='repo status'
@@ -122,3 +121,7 @@ alias crepl='code main.c && watch "gcc main.c -o main && ./main"'
 alias grep='grep --color=auto'
 alias clr="clear"
 alias python=python3
+alias ssh-key-gen='ssh-keygen -t ed25519 -C '
+
+# SSH =========================================================
+alias ssh-frog='ssh frog@frog03.mikr.us -p 10411'
