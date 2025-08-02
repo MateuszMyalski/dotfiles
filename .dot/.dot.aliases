@@ -78,6 +78,7 @@ alias gc-an='git commit --amend --no-edit'
 alias gl='git log'
 alias gc-b='git checkout -b'
 alias gu='git push'
+alias gg-key='ssh-keygen -t ed25519 -C '
 
 # repo tool aliases ===========================================
 alias rs='repo status'
