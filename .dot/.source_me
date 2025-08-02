@@ -1,4 +1,8 @@
 #!/bin/sh
+# For login-shell the default entry-point is bash_profile
+# For non-interactive login the usual way is to go with .bashrc
+[[ "$__BASHRC_SOURCED__" == 1 ]] && return
+export __BASHRC_SOURCED__=1
 
 # If not running interactively, don't do anything
 case $- in
@@ -26,6 +30,7 @@ done
 include () {
     [[ -f "$1" ]] && source "$1"
 }
+
 
 include ~/.bash_profile
 include ~/.bash_alias
