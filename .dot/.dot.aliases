@@ -125,36 +125,3 @@ alias ssh-key-gen='ssh-keygen -t ed25519 -C '
 
 # SSH =========================================================
 alias ssh-frog='ssh frog@frog03.mikr.us -p 10411'
-
-# webTODOTXT ==================================================
-task_add() {
-    if [ $# -lt 2 ]; then
-        echo "Usage: add_task PRIORITY TASK_TEXT"
-        return 1
-    fi
-
-    local priority=""
-    if [ "$1" != "_" ]; then
-        priority="($1) "
-    fi
-    shift
-    local task_text="$*"
-    local date_str
-    date_str=$(date +%Y-%m-%d)
-
-    if [ -z "$WEB_TODO_TXT_TOKEN" ]; then
-        echo "Error: WEB_TODO_TXT_TOKEN is not set"
-        return 1
-    fi
-
-    local payload="${priority}${date_str} ${task_text}"
-
-    local response
-    response=$(curl -s -X POST \
-        -H "X-API-Key: $WEB_TODO_TXT_TOKEN" \
-        -H "Content-type: application/json" \
-        -d "{ \"task\" : \"${payload}\" }" \
-        https://frog03-30411.wykr.es/api/v1/mmyalski/task)
-
-    echo "$response" | grep -oP '"status"\s*:\s*"\K[^"]+'
-}
