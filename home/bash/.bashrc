@@ -31,3 +31,5 @@ alias grep='grep --color=auto'
 
 [ -f ~/.local/bin/bashmarks ] && source ~/.local/bin/bashmarks
 [ -f ~/.local/bin/uart ] && source ~/.local/bin/uart
+
+export PATH="$HOME/.local/bin:$PATH"
