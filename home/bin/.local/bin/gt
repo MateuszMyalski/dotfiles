@@ -16,7 +16,6 @@ Options:
   bs       git branch --set-upstream=<upstream>
            (without upstream opens fzf)
   p        git push
-  r        git for-each-ref --format='%(refname:short)' refs/remotes/
 EOF
     exit 1
 fi
@@ -57,6 +56,5 @@ case "$flag" in
         git branch --set-upstream-to="$branch"
         ;;
     p) git push "$@" ;;
-    r) git for-each-ref --format='%(refname:short)' refs/remotes/ ;;
     *) echo "Unknown option: $flag" ;;
 esac
