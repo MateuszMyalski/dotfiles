@@ -6,7 +6,8 @@ if [[ "$1" == "-h" || $# -lt 1 ]]; then
 Options:
   -h        shows this help
   -s        git status
-  -c        git commit
+  -aa       git add *
+  -c        git commit -m
   -ca       git commit --amend
   -can      git commit --amend --no-edit
   -l        git log
@@ -21,8 +22,9 @@ flag="$1"
 shift
 
 case "$flag" in
+    -aa) git add \* "$@" ;;
     -s) git status "$@" ;;
-    -c) git commit "$@" ;;
+    -c) git commit -m "$@" ;;
     -ca) git commit --amend "$@" ;;
     -can) git commit --amend --no-edit "$@" ;;
     -l) git log "$@" ;;
