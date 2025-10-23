@@ -1,3 +1,0 @@
-#!/bin/sh
-
-[ -f ~/.local/bin/bashmarks.sh ] && source ~/.local/bin/bashmarks.sh

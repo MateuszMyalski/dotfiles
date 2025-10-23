@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "-h" || $# -lt 1 ]]; then
+    echo "Usage: $(basename $0) [OPTIONS]"
+    cat <<EOF
+Options:
+  -h        shows this help
+  -s        git status
+  -c        git commit
+  -ca       git commit --amend
+  -can      git commit --amend --no-edit
+  -l        git log
+  -hb       git checkout -b <branch>
+  -bs       git branch --set-upstream=<upstream>
+  -p        git push
+EOF
+    exit 1
+fi
+
+flag="$1"
+shift
+
+case "$flag" in
+    -s) git status "$@" ;;
+    -c) git commit "$@" ;;
+    -ca) git commit --amend "$@" ;;
+    -can) git commit --amend --no-edit "$@" ;;
+    -l) git log "$@" ;;
+    -hb) git checkout -b "$@" ;;
+    -bs) git branch --set-upstream="$@" ;;
+    -p) git push "$@" ;;
+    *) echo "Unknown option: $flag"; usage ;;
+esac

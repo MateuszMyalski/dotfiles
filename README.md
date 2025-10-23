@@ -1,9 +1,11 @@
-# How to install
-1. Set `install.sh` as executable `chmod +x install.sh`
-2. Execute the script "./install.sh"
+# dotfiles
 
-# Hooks
-The auto-update feature of the dotfiles relies on number stored in `.version` file. To always keep updated dotfiles this number should be incremented every commit. This work is automated via git hook.
-To configure:
-1. `cp hooks/pre-commit.sh .git/hooks/pre-commit`
-2. `chmod +x .git/hooks/pre-commit`
+## Intallation
+
+1. Install `stow`
+2. `cd home`
+3. `stow -t "$HOME" <package>
+
+## Uninstall
+1. `cd home`
+2. `stow -D -t "$HOME" <package>

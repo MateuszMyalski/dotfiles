@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+SHEBANG="#!/usr/bin/env bash"
+
+if [ $# -eq 0 ]
+  then
+    echo "Usage: $(basename $0) [FILE]"
+    exit 1
+fi
+
+touch $1
+echo $SHEBANG > $1
+chmod +x $1
+
+exit 0

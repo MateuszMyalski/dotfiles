@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# --- Autocompletion function ---
+_uart_completion() {
+    local cur
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+
+    local speeds="57600 115200 230400 3000000"
+    local ports
+    ports=$(ls /dev/ttyUSB* 2>/dev/null | xargs -n1 basename 2>/dev/null | sed 's/^tty//')
+
+    if [[ $COMP_CWORD -eq 1 ]]; then
+        COMPREPLY=( $(compgen -W "${speeds}" -- "${cur}") )
+    elif [[ $COMP_CWORD -eq 2 ]]; then
+        COMPREPLY=( $(compgen -W "${ports}" -- "${cur}") )
+    fi
+}
+
+# Only register completion if sourced
+if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
+    complete -F _uart_completion uart
+    return
+fi
+
+# --- Run serial tool ---
+if [[ "$1" == "-h" || "$1" == "--help" || $# -lt 2 && "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "Usage: $(basename $0) [SPEED] [USB PORT]"
+    echo "Example: $(basename $0) 115200 USB0"
+    exit 1
+fi
+
+# --- Detect available serial tool ---
+if command -v minicom &>/dev/null; then
+    SERIAL_TOOL="minicom"
+elif command -v picocom &>/dev/null; then
+    SERIAL_TOOL="picocom"
+else
+    echo "Neither minicom nor picocom found."
+    exit 1
+fi
+
+SPEED="$1"
+PORT="$2"
+DEVICE="/dev/tty${PORT}"
+
+if [[ ! -e "$DEVICE" ]]; then
+    echo "Device $DEVICE not found."
+    exit 1
+fi
+
+if [[ "$SERIAL_TOOL" == "minicom" ]]; then
+    exec "$SERIAL_TOOL" -b "$SPEED" -D "$DEVICE"
+else
+    exec "$SERIAL_TOOL" -b "$SPEED" "$DEVICE"
+fi
+
