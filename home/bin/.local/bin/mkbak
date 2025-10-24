@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]
+  then
+    echo "Usage: $(basename $0) [FILE]"
+    exit 1
+fi
+
+target="$1.bak"
+if [ -e "$target" ]; then
+    n=1
+    while [ -e "${target}.${n}" ]; do
+        n=$((n+1))
+    done
+    target="${target}.${n}"
+fi
+cp -- "$1" "$target"
