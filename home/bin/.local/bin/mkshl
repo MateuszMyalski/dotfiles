@@ -8,6 +8,12 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
+if [ -f $1 ]
+  then
+    echo "File exists!"
+    exit 1
+fi
+
 touch $1
 echo $SHEBANG > $1
 chmod +x $1

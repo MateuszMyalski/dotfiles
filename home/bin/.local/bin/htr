@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+import sys
+import os
+from enum import Enum
+
+
+class Operation(Enum):
+    RANGE = ".."
+    ADD = "+"
+    SUB = "-"
+    MOD = "%"
+    LSL = "lsl"
+    LSR = "lsr"
+    AND = "and"
+    OR = "or"
+    XOR = "^"
+
+
+def usage():
+    name = os.path.basename(sys.argv[0])
+    ops = ", ".join(op.value for op in Operation)
+    print(f"""hex translate ({name}) — translator and calculator for hex/decimal/binary values
+
+Description:
+  Converts and performs arithmetic or bitwise operations on numbers
+  in hexadecimal, decimal, or binary format.
+  - Values starting with '0x' are hexadecimal
+  - Values starting with '0b' are binary
+  - Otherwise, values are decimal
+
+Supported operations ({ops}):
+  [no operator]   — convert between hex and decimal
+  +VALUE          — addition
+  -VALUE          — subtraction
+  ..VALUE         — range (VALUE - BASE)
+  %VALUE          — modulo
+  lslN            — shift left by N bits
+  lsrN            — shift right by N bits
+  andVALUE        — bitwise AND
+  orVALUE         — bitwise OR
+  ^VALUE          — bitwise XOR
+
+Optional flags:
+  --bin           — force binary output
+
+Usage:
+  {name} [--bin] [BASE VALUE] <operator>[VALUE]
+
+Examples:
+  {name} 0xff           → 255
+  {name} 255            → 0xff
+  {name} 0xff +0x1      → 0x100
+  {name} 0xff -0x1      → 0xfe
+  {name} 0xff ..0x1ff   → 0x100
+  {name} 0xff %0x10     → 0xf
+  {name} 0b1010 lsl1    → 0b10100
+  {name} 0b1010 lsr2    → 0b10
+  {name} 0xf0 and0x0f   → 0x0
+  {name} 0xf0 or0x0f    → 0xff
+  {name} 0xf0 ^0xaa     → 0x5a
+
+With forced binary output:
+  {name} --bin 0xff +1 → 0b100000000
+  echo "0x3 or0x4" | {name} --bin
+""")
+
+
+def check_format(value):
+    if value.startswith("0x"):
+        return "hex"
+    elif value.startswith("0b"):
+        return "bin"
+    return "dec"
+
+
+def parse_number(value):
+    try:
+        return int(value, 0)
+    except ValueError:
+        sys.exit(f"Error: invalid number '{value}'")
+
+
+def get_operation(value):
+    # Sort longer ops first (lsl, lsr, ..)
+    for op in sorted(Operation, key=lambda o: -len(o.value)):
+        if value.startswith(op.value):
+            return op
+    valid_ops = ", ".join(op.value for op in Operation)
+    sys.exit(f"Error: invalid operation '{value}' (expected one of {valid_ops})")
+
+
+def get_value(value):
+    for op in sorted(Operation, key=lambda o: -len(o.value)):
+        if value.startswith(op.value):
+            return parse_number(value[len(op.value):])
+    sys.exit(f"Error: invalid value format '{value}'")
+
+
+def display_output(value, fmt, invert=False, force_bin=False):
+    if force_bin:
+        print(bin(value))
+        return
+
+    if invert:
+        fmt = "dec" if fmt != "dec" else "hex"
+
+    if fmt == "hex":
+        print(hex(value))
+    elif fmt == "bin":
+        print(bin(value))
+    else:
+        print(value)
+
+
+def handle_operation(base, val, op):
+    if op == Operation.RANGE:
+        return val - base
+    elif op == Operation.ADD:
+        return base + val
+    elif op == Operation.SUB:
+        return base - val
+    elif op == Operation.MOD:
+        if val == 0:
+            sys.exit("Error: modulo by zero")
+        return base % val
+    elif op == Operation.LSL:
+        return base << val
+    elif op == Operation.LSR:
+        return base >> val
+    elif op == Operation.AND:
+        return base & val
+    elif op == Operation.OR:
+        return base | val
+    elif op == Operation.XOR:
+        return base ^ val
+    else:
+        sys.exit(f"Error: unknown operation '{op}'")
+
+
+def parse_input(args):
+    """Return (tokens, force_bin_flag) from argv or piped stdin"""
+    force_bin = False
+    if "--bin" in args:
+        force_bin = True
+        args = [a for a in args if a != "--bin"]
+
+    # Args from CLI
+    if len(args) > 1:
+        return args[1:], force_bin
+
+    # Piped input
+    if not sys.stdin.isatty():
+        tokens = sys.stdin.read().strip().split()
+        if tokens:
+            return tokens, force_bin
+
+    usage()
+    sys.exit(1)
+
+
+def main():
+    tokens, force_bin = parse_input(sys.argv)
+    if not tokens:
+        usage()
+        sys.exit(1)
+
+    base_str = tokens[0]
+    base = parse_number(base_str)
+    base_fmt = check_format(base_str)
+
+    if len(tokens) == 1:
+        display_output(base, base_fmt, invert=True, force_bin=force_bin)
+        return
+
+    op_str = tokens[1]
+    op = get_operation(op_str)
+    val = get_value(op_str)
+
+    result = handle_operation(base, val, op)
+    display_output(result, base_fmt, force_bin=force_bin)
+
+
+if __name__ == "__main__":
+    main()

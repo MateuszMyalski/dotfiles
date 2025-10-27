@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+
+# Read input either from pipe or argument
+if [ ! -t 0 ]; then
+    input=$(cat)
+elif [ -n "$1" ]; then
+    input="$1"
+else
+    echo "Usage: $(basename $0) [BYTES]"
+    exit 1 
+fi
+
+# Check if input is a number
+if ! [[ "$input" =~ ^[0-9]+$ ]]; then
+    echo "Error: Input must be a number"
+    exit 1
+fi
+
+# Convert to human-readable format
+size=$input
+left=$input
+units=("B" "KB" "MB" "GB" "TB" "PB")
+i=0
+
+while [ $size -ge 1024 ] && [ $i -lt ${#units[@]} ]; do
+    size=$((size / 1024))
+    i=$((i + 1))
+done
+
+echo "$size ${units[$i]}"
