@@ -6,7 +6,6 @@ alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias 5..='cd ../../../../..'
 
-alias q='exit'
 alias clr='clear'
 
 alias py-venv-c='python -m venv .venv'
