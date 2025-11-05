@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import sys
+
+def main():
+    data = sys.stdin.read() if not sys.stdin.isatty() else " ".join(sys.argv[1:])
+    if not data:
+        print("Usage: ord.py [STRING] or echo 'A' | ord.py", file=sys.stderr)
+        sys.exit(1)
+
+    codes = [str(ord(ch)) for ch in data]
+    print(" ".join(codes))
+
+if __name__ == "__main__":
+    main()

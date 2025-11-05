@@ -5,9 +5,11 @@ if [[ "$1" == "-h" || $# -lt 1 ]]; then
     cat <<EOF
 Options:
   h        shows this help
-  s        git status
+  s        git Status
+  aa       git add -A
   au       git add -u
-  c        git commit -m
+  c        git commit
+  cm       git commit -m
   ca       git commit --amend
   can      git commit --amend --no-edit
   l        git log
@@ -16,6 +18,7 @@ Options:
   bs       git branch --set-upstream=<upstream>
            (without upstream opens fzf)
   p        git push
+  *        alias to 'git'
 EOF
     exit 1
 fi
@@ -24,9 +27,11 @@ flag="$1"
 shift
 
 case "$flag" in
+    aa) git add -A "$@" ;;
     au) git add -u "$@" ;;
     s) git status "$@" ;;
-    c) git commit -m "$@" ;;
+    c) git commit "$@" ;;
+    cm) git commit -m "$@" ;;
     ca) git commit --amend "$@" ;;
     can) git commit --amend --no-edit "$@" ;;
     l) git log "$@" ;;
@@ -56,5 +61,5 @@ case "$flag" in
         git branch --set-upstream-to="$branch"
         ;;
     p) git push "$@" ;;
-    *) echo "Unknown option: $flag" ;;
+    *) git "$flag" "$@" ;;
 esac

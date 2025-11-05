@@ -24,6 +24,8 @@ alias rs='repo status'
 alias ru='repo upload'
 
 alias grep='grep --color=auto'
+alias tree='tree -L 1'
+alias du='du -h --max-depth=1'
 
 [ -f ~/.env ] && source ~/.env
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
