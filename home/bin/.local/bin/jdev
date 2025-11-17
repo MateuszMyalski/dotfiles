@@ -1,0 +1,139 @@
+#!/bin/bash
+
+set +H  # Disable history expansion to allow ! in strings
+
+# jdev - Development Journal Script
+# A simple command-line tool to manage your development journal
+
+JOURNAL_FILE="$HOME/.dev_journal"
+
+# Function to display help
+show_help() {
+    cat << EOF
+jdev - Development Journal
+
+A simple tool to keep track of your development activities and notes.
+
+Usage:
+    jdev -a "Your log message"    Add a new log entry
+    jdev -l                       Display all log entries
+    jdev -l --today               Display today's log entries
+    jdev -l --last                Display entries from the last logged date
+    jdev -e                       Edit the journal file
+
+Environment Variables:
+    JDEV_EDITOR                   Set your preferred editor (default: vim, nano, or vi)
+
+Examples:
+    jdev -a "Implemented feature X with #authentication"
+    jdev -a "Fixed bug in API endpoint https://example.com/api/users"
+    jdev -l --today
+    jdev -e
+
+EOF
+}
+
+# Function to add a log entry
+add_log() {
+    local message="$1"
+    
+    if [ -z "$message" ]; then
+        echo "Error: Log message cannot be empty"
+        echo "Usage: jdev -a \"Your log message\""
+        exit 1
+    fi
+    
+    local date_stamp=$(date +"%Y-%m-%d %H:%M:%S")
+    echo "[$date_stamp]: $message" >> "$JOURNAL_FILE"
+    echo "✓ Log entry added successfully"
+}
+
+# Function to display logs
+display_logs() {
+    local filter="$1"
+    
+    if [ ! -f "$JOURNAL_FILE" ]; then
+        echo "No journal entries found. Start by adding your first entry with: jdev -a \"Your message\""
+        exit 0
+    fi
+    
+    case "$filter" in
+        --today)
+            local today=$(date +%Y-%m-%d)
+            local entries=$(grep "^\[$today" "$JOURNAL_FILE")
+            if [ -z "$entries" ]; then
+                echo "No entries found for today ($today)"
+            else
+                echo "=== Today's Entries ($today) ==="
+                echo "$entries"
+            fi
+            ;;
+        --last)
+            # Get the last date from the file (extract date from [YYYY-MM-DD HH:MM:SS]: format)
+            local last_date=$(tail -n 1 "$JOURNAL_FILE" | sed 's/^\[\([0-9-]\{10\}\).*/\1/')
+            if [ -z "$last_date" ]; then
+                echo "No entries found in the journal"
+            else
+                local entries=$(grep "^\[$last_date" "$JOURNAL_FILE")
+                echo "=== Last Entry Date ($last_date) ==="
+                echo "$entries"
+            fi
+            ;;
+        *)
+            echo "=== All Journal Entries ==="
+            cat "$JOURNAL_FILE"
+            ;;
+    esac
+}
+
+# Function to edit the journal
+edit_journal() {
+    if [ ! -f "$JOURNAL_FILE" ]; then
+        echo "No journal entries found. Start by adding your first entry with: jdev -a \"Your message\""
+        exit 0
+    fi
+    
+    # Determine editor to use
+    local editor="${JDEV_EDITOR:-${EDITOR:-vim}}"
+    
+    # Fallback to common editors if the specified one is not available
+    if ! command -v "$editor" &> /dev/null; then
+        if command -v nano &> /dev/null; then
+            editor="nano"
+        elif command -v vi &> /dev/null; then
+            editor="vi"
+        else
+            echo "Error: No editor found. Please set JDEV_EDITOR environment variable."
+            exit 1
+        fi
+    fi
+    
+    "$editor" "$JOURNAL_FILE"
+}
+
+# Main script logic
+if [ $# -eq 0 ]; then
+    show_help
+    exit 0
+fi
+
+case "$1" in
+    -a)
+        add_log "$2"
+        ;;
+    -l)
+        display_logs "$2"
+        ;;
+    -e)
+        edit_journal
+        ;;
+    -h|--help)
+        show_help
+        ;;
+    *)
+        echo "Error: Unknown option '$1'"
+        echo ""
+        show_help
+        exit 1
+        ;;
+esac
