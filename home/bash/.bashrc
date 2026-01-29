@@ -33,5 +33,7 @@ alias du='du -h --max-depth=1'
 [ -f ~/.local/bin/bashmarks ] && source ~/.local/bin/bashmarks
 [ -f ~/.local/bin/uart ] && source ~/.local/bin/uart
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+[ -f ~/.cargo/env ] && source ~/.cargo/env
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Workspaces/uemacs:$PATH"
