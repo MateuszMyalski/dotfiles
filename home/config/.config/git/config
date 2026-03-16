@@ -1,0 +1,27 @@
+[alias]
+    s = status
+    aa = add -A
+    au = add -u
+    c = commit
+    cm = commit -m
+    cj = commit -m "-"
+    ca = commit --amend
+    can = commit --amend --no-edit
+    l = log
+    hb = "!f() { git checkout -b \"work-$(tr -dc a-z </dev/urandom | head -c 6)\"; }; f"
+    bs = "!f() { branch=$(git for-each-ref --format='%(refname:short)' refs/remotes/ | fzf --height=15 --reverse --border --prompt='Upstream> ') && git branch --set-upstream-to=\"$branch\"; }; f"
+    p = push
+    del-work-branch = "!f() { git switch --detach && git branch | grep "work-" | xargs git branch -D 2> /dev/null; }; f"
+
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[difftool]
+    prompt = false
+
+[color]
+    ui = auto
+
+[core]
+    editor = code --wait
