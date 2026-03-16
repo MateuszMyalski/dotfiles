@@ -10,8 +10,6 @@ elif command -v gnome-text-editor &>/dev/null; then
     gnome-text-editor "$1"
 elif command -v nano &>/dev/null; then
     nano "$1"
-elif command -v nano &>/dev/null; then
-    nano "$1"
 else
     echo "Do you really want to use vi?"
     exit 1
