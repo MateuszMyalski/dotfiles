@@ -27,6 +27,8 @@ alias grep='grep --color=auto'
 alias tree='tree -L 1'
 alias du='du -h --max-depth=1'
 
+alias cdtmp='cd $(ctmp | grep -o "/tmp/.*")'
+
 [ -f ~/.env ] && source ~/.env
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
 

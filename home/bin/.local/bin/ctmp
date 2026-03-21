@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+TEMP=$(mktemp -d)
+echo "Temporary directory $TEMP"
