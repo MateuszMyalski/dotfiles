@@ -12,7 +12,7 @@
     bs = "!f() { branch=$(git for-each-ref --format='%(refname:short)' refs/remotes/ | fzf --height=15 --reverse --border --prompt='Upstream> ') && git branch --set-upstream-to=\"$branch\"; }; f"
     p = push
     del-work-branch = "!f() { git switch --detach && git branch | grep "work-" | xargs git branch -D 2> /dev/null; }; f"
-    clang-format-commit = "!f() { git diff HEAD^ --name-only | xargs clang-format -i; }; f"
+    clang-format-commit = "!f() { git diff HEAD^ --name-only | grep -E '\\.(hpp|cpp|c|h)$' | xargs --no-run-if-empty clang-format -i; }; f"
 
 [diff]
     tool = vscode
