@@ -1,0 +1,137 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    "cli_default_open_behavior": "new_window",
+    "icon_theme": {
+        "mode": "dark",
+        "light": "Zed (Default)",
+        "dark": "Colored Zed Icons Theme Dark"
+    },
+    "hard_tabs": false,
+    "agent_servers": {
+        "Kiro Agent": {
+            "type": "custom",
+            "command": "~/.local/bin/kiro-cli",
+            "args": ["acp"],
+            "env": {},
+        },
+    },
+    "agent": {
+        "sidebar_side": "left",
+        "dock": "right",
+        "favorite_models": [],
+        "model_parameters": [],
+    },
+    "active_pane_modifiers": {
+        "border_size": 0.0,
+        "inactive_opacity": 1.0,
+    },
+    "use_system_window_tabs": false,
+    "bottom_dock_layout": "full",
+    "preview_tabs": {
+        "enabled": true,
+        "enable_preview_from_file_finder": false,
+        "enable_preview_from_multibuffer": true,
+        "enable_preview_from_project_panel": true,
+    },
+    "title_bar": {
+        "show_menus": false,
+        "show_user_picture": true,
+        "show_user_menu": true,
+        "show_sign_in": false,
+        "show_onboarding_banner": false,
+        "show_project_items": true,
+        "show_branch_status_icon": false,
+        "show_branch_name": false,
+    },
+    "debugger": {
+        "button": false,
+    },
+    "file_finder": {
+        "file_icons": true,
+    },
+    "diagnostics": {
+        "button": false,
+        "include_warnings": false,
+    },
+    "diagnostics_max_severity": "off",
+    "cursor_shape": "bar",
+    "agent_buffer_font_size": 15.0,
+    "agent_ui_font_size": 16.0,
+    "ui_font_weight": 450.0,
+    "ui_font_family": ".ZedSans",
+    "buffer_line_height": "standard",
+    "buffer_font_weight": 400.0,
+    "use_system_prompts": true,
+    "use_system_path_prompts": true,
+    "toolbar": {
+        "breadcrumbs": true,
+    },
+    "terminal": {},
+    "project_panel": {
+        "show_diagnostics": "off",
+        "scrollbar": {
+            "show": "auto",
+        },
+        "indent_size": 15.0,
+        "entry_spacing": "standard",
+        "dock": "left",
+        "button": true,
+        "hide_root": true,
+        "bold_folder_labels": true,
+        "folder_icons": true,
+        "git_status": false,
+        "auto_fold_dirs": false,
+    },
+    "outline_panel": {
+        "folder_icons": true,
+        "git_status": false,
+    },
+    "status_bar": {
+        "experimental.show": true,
+    },
+    "tab_bar": {
+        "show_tab_bar_buttons": true,
+        "show_pinned_tabs_in_separate_row": false,
+        "show": true,
+    },
+    "tabs": {
+        "close_position": "right",
+        "git_status": false,
+        "show_close_button": "hidden",
+    },
+    "gutter": {
+        "folds": false,
+    },
+    "minimap": {
+        "show": "never",
+    },
+    "scrollbar": {
+        "axes": {
+            "horizontal": false,
+            "vertical": true,
+        },
+    },
+    "cursor_blink": true,
+    "buffer_font_fallbacks": ["monospace"],
+    "buffer_font_family": "Noto Mono",
+    "colorize_brackets": true,
+    "show_whitespaces": "all",
+    "wrap_guides": [120],
+    "soft_wrap": "none",
+    "tab_size": 4,
+    "base_keymap": "VSCode",
+    "ui_font_size": 16.0,
+    "buffer_font_size": 15.0,
+    "theme": {
+        "mode": "dark",
+        "light": "Ayu Dark",
+        "dark": "macOS Classic Dark",
+    },
+}
