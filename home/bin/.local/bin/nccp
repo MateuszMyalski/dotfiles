@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Usage:
+#   nccp send [-p PORT] <file|dir> <ip>
+#   nccp recv [-p PORT] <output_file>
+set -e
+
+PORT=9999
+MODE=$1; shift
+
+while getopts "p:" opt; do
+  case $opt in p) PORT=$OPTARG ;; esac
+done
+shift $((OPTIND - 1))
+
+case $MODE in
+  send)
+    [[ $# -lt 2 ]] && { echo "Usage: nccp send [-p PORT] <file|dir> <ip>"; exit 1; }
+    SRC=$1 IP=$2
+    if [[ -d "$SRC" ]]; then
+      echo "Sending directory '$SRC' as tar archive..."
+      tar -czf - "$SRC" | nc "$IP" "$PORT"
+    elif [[ -f "$SRC" ]]; then
+      echo "Sending file '$SRC'..."
+      nc "$IP" "$PORT" < "$SRC"
+    else
+      echo "Error: '$SRC' not found"; exit 1
+    fi
+    ;;
+  recv)
+    [[ $# -lt 1 ]] && { echo "Usage: nccp recv [-p PORT] <output_file>"; exit 1; }
+    OUT=$1
+    echo "Listening on port $PORT, saving to '$OUT'..."
+    nc -l -p "$PORT" > "$OUT"
+    if file "$OUT" | grep -q "gzip compressed"; then
+      read -rp "Received archive. Unpack here? [y/N] " ans
+      [[ "$ans" =~ ^[Yy]$ ]] && tar -xzf "$OUT" && rm "$OUT"
+    fi
+    ;;
+  *)
+    echo "Usage: nccp <send|recv> [-p PORT] ..."
+    exit 1
+    ;;
+esac
+
+echo "Done."
