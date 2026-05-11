@@ -20,14 +20,455 @@
     },
     {
         "context": "Workspace",
+        "unbind": {
+            "ctrl-?": "agent::ToggleFocus",
+        },
+    },
+    {
         "bindings": {
-            "ctrl-alt-shift-a": "agent::ToggleFocus"
-        }
+            "ctrl-alt-shift-a": "agent::FocusAgent",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g d": "git::Diff",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g down": "git::Pull",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g up": "git::Push",
+        },
+    },
+    {
+        "context": "AcpThread > Editor",
+        "unbind": {
+            "ctrl-shift-d": "git::Diff",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "ctrl-shift-enter": "git::Amend",
+        },
+    },
+    {
+        "context": "GitDiff > Editor",
+        "unbind": {
+            "ctrl-shift-enter": "git::Amend",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-shift-enter": "git::Amend",
+        },
+    },
+    {
+        "context": "GitCommit > Editor",
+        "unbind": {
+            "ctrl-shift-enter": "git::Amend",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g ctrl-g": "git::Fetch",
+        },
+    },
+    {
+        "context": "Editor",
+        "unbind": {
+            "alt-g b": "git::Blame",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "ctrl-enter": "git::Commit",
+        },
+    },
+    {
+        "context": "GitDiff > Editor",
+        "unbind": {
+            "ctrl-enter": "git::Commit",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-enter": "git::Commit",
+        },
+    },
+    {
+        "context": "GitCommit > Editor",
+        "unbind": {
+            "ctrl-enter": "git::Commit",
+        },
+    },
+    {
+        "context": "GitPanel && CommitEditor",
+        "unbind": {
+            "escape": "git::Cancel",
+        },
     },
     {
         "context": "Workspace",
         "unbind": {
-            "ctrl-?": "agent::ToggleFocus"
-        }
-    }
+            "ctrl-alt-shift-b": "git::Branch",
+        },
+    },
+    {
+        "context": "Editor && !agent_diff",
+        "unbind": {
+            "ctrl-k ctrl-r": "git::Restore",
+        },
+    },
+    {
+        "context": "Workspace",
+        "unbind": {
+            "ctrl-alt-shift-w": "git::Worktree",
+        },
+    },
+    {
+        "context": "GitDiff > Editor",
+        "unbind": {
+            "ctrl-space": "git::StageAll",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-space": "git::StageAll",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g shift-up": "git::ForcePush",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "alt-y": "git::StageFile",
+        },
+    },
+    {
+        "context": "GitDiff > Editor",
+        "unbind": {
+            "ctrl-shift-space": "git::UnstageAll",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-shift-space": "git::UnstageAll",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g shift-down": "git::PullRebase",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "shift-space": "git::StageRange",
+        },
+    },
+    {
+        "context": "Editor",
+        "unbind": {
+            "alt-g r": "git::ReviewDiff",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "ctrl-delete": [
+                "git::RestoreFile",
+                {
+                    "skip_prompt": false,
+                },
+            ],
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "ctrl-backspace": [
+                "git::RestoreFile",
+                {
+                    "skip_prompt": false,
+                },
+            ],
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "shift-delete": [
+                "git::RestoreFile",
+                {
+                    "skip_prompt": false,
+                },
+            ],
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "backspace": [
+                "git::RestoreFile",
+                {
+                    "skip_prompt": false,
+                },
+            ],
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "delete": [
+                "git::RestoreFile",
+                {
+                    "skip_prompt": false,
+                },
+            ],
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "alt-shift-y": "git::UnstageFile",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "space": "git::ToggleStaged",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "ctrl-alt-y": "git::ToggleStaged",
+        },
+    },
+    {
+        "context": "Editor && !agent_diff",
+        "unbind": {
+            "ctrl-alt-y": "git::ToggleStaged",
+        },
+    },
+    {
+        "context": "Editor && !agent_diff",
+        "unbind": {
+            "alt-y": "git::StageAndNext",
+        },
+    },
+    {
+        "context": "GitDiff > Editor",
+        "unbind": {
+            "ctrl-k ctrl-r": "git::RestoreAndNext",
+        },
+    },
+    {
+        "context": "Editor && !agent_diff",
+        "unbind": {
+            "alt-shift-y": "git::UnstageAndNext",
+        },
+    },
+    {
+        "context": "StashDiff > Editor",
+        "unbind": {
+            "ctrl-shift-space": "git::PopCurrentStash",
+        },
+    },
+    {
+        "context": "StashDiff > Editor",
+        "unbind": {
+            "ctrl-shift-backspace": "git::DropCurrentStash",
+        },
+    },
+    {
+        "context": "StashDiff > Editor",
+        "unbind": {
+            "ctrl-space": "git::ApplyCurrentStash",
+        },
+    },
+    {
+        "context": "Editor",
+        "unbind": {
+            "alt-g m": "git::OpenModifiedFiles",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g shift-backspace": "git::TrashUntrackedFiles",
+        },
+    },
+    {
+        "context": "GitPanel",
+        "unbind": {
+            "ctrl-g backspace": "git::RestoreTrackedFiles",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "alt-l": "git::GenerateCommitMessage",
+        },
+    },
+    {
+        "context": "GitCommit > Editor",
+        "unbind": {
+            "alt-l": "git::GenerateCommitMessage",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "down": "git_panel::NextEntry",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "escape": "git_panel::ToggleFocus",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "shift-tab": "git_panel::FocusEditor",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "tab": "git_panel::FocusEditor",
+        },
+    },
+    {
+        "context": "Workspace",
+        "unbind": {
+            "ctrl-shift-g": "git_panel::ToggleFocus",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "alt-up": "git_panel::FocusChanges",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "shift-tab": "git_panel::FocusChanges",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "tab": "git_panel::FocusChanges",
+        },
+    },
+    {
+        "context": "CommitEditor > Editor",
+        "unbind": {
+            "escape": "git_panel::FocusChanges",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "up": "git_panel::PreviousEntry",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "right": "git_panel::ExpandSelectedEntry",
+        },
+    },
+    {
+        "context": "GitPanel && ChangesList && !GitBranchSelector",
+        "unbind": {
+            "left": "git_panel::CollapseSelectedEntry",
+        },
+    },
+    {
+        "context": "GitPicker",
+        "unbind": {
+            "alt-2": "git_picker::ActivateStashTab",
+        },
+    },
+    {
+        "context": "GitPicker",
+        "unbind": {
+            "alt-1": "git_picker::ActivateBranchesTab",
+        },
+    },
+    {
+        "context": "CollabPanel && not_editing",
+        "unbind": {
+            "ctrl-backspace": "collab_panel::Remove",
+        },
+    },
+    {
+        "context": "!Terminal",
+        "unbind": {
+            "ctrl-shift-c": "collab_panel::ToggleFocus",
+        },
+    },
+    {
+        "context": "CollabPanel && editing > Editor",
+        "unbind": {
+            "space": "collab_panel::InsertSpace",
+        },
+    },
+    {
+        "context": "CollabPanel",
+        "unbind": {
+            "alt-up": "collab_panel::MoveChannelUp",
+        },
+    },
+    {
+        "context": "CollabPanel",
+        "unbind": {
+            "alt-down": "collab_panel::MoveChannelDown",
+        },
+    },
+    {
+        "context": "CollabPanel",
+        "unbind": {
+            "alt-enter": "collab_panel::OpenSelectedChannelNotes",
+        },
+    },
+    {
+        "context": "CollabPanel",
+        "unbind": {
+            "shift-enter": "collab_panel::ToggleSelectedChannelFavorite",
+        },
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "alt-j": "editor::MoveUp",
+            "alt-k": "editor::MoveDown",
+            "alt-h": "editor::MoveLeft",
+            "alt-l": "editor::MoveRight",
+        },
+    },
 ]
