@@ -15,9 +15,9 @@
     clang-format-commit = "!f() { git diff HEAD^ --name-only | grep -E '\\.(hpp|cpp|c|h)$' | xargs --no-run-if-empty clang-format -i; }; f"
 
 [diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+    tool = zed
+[difftool "zed"]
+    cmd = zed --wait --diff $LOCAL $REMOTE
 [difftool]
     prompt = false
 
@@ -25,4 +25,4 @@
     ui = auto
 
 [core]
-    editor = code --wait
+    editor = zed --wait
