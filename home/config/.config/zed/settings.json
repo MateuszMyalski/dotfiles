@@ -22,7 +22,7 @@
     "icon_theme": {
         "mode": "dark",
         "light": "Zed (Default)",
-        "dark": "VSCode Icons for Zed (Dark Official Icons)",
+        "dark": "Colored Zed Icons Theme Dark",
     },
     "hard_tabs": false,
     "agent_servers": {
