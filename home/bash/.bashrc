@@ -29,6 +29,11 @@ alias du='du -h --max-depth=1'
 
 alias cdtmp='cd $(ctmp | grep -o "/tmp/.*")'
 
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+alias dcr="docker compose restart"
+alias dexti="docker exec -ti"
+
 [ -f ~/.env ] && source ~/.env
 [ -f ~/.bashrc_local ] && source ~/.bashrc_local
 
